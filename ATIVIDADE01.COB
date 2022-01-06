@@ -1,5 +1,5 @@
        IDENTIFICATION DIVISION.
-       PROGRAM-ID. PROGCOB01.
+       PROGRAM-ID. ATIVIDADE01.
       **********************************************
       *AREA DE COMENTARIOS - REMARKS
       *AUTHOR = KIVIA(ALURA) KIVIAAL
