@@ -1,0 +1,79 @@
+
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. ATIVIDADE03.
+      **********************************************
+      *AREA DE COMENTARIOS - REMARKS
+      *AUTHOR = KIVIA(ALURA) KIVIAAL
+      *OBJETIVO: ATIVIDADE 03
+      *CALCULAR VALORES DOS SALARIOS DE ACORDO COM O ANO DO FUNCIONARIO
+      *DATA   = 06/01/22
+      **********************************************
+       ENVIRONMENT DIVISION.
+       CONFIGURATION SECTION.
+       SPECIAL-NAMES.
+           DECIMAL-POINT IS COMMA.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       77 WRK-NOME         PIC A(20)    VALUE SPACES.
+       77 WRK-ANO          PIC 9(04)    VALUE ZEROS.
+       77 WRK-SALARIO      PIC 9(04)V99 VALUE ZEROS.
+       77 WRK-TEMPO-CASA   PIC 9(02)    VALUE ZEROS.
+       77 WRK-AUMENTO      PIC $ZZZ9,99 VALUE ZEROS.
+       77 WRK-DATA-SISTEMA PIC 9(04)    VALUE ZEROS.
+       PROCEDURE DIVISION.
+
+       0001-PRINCIPAL.
+
+           IF WRK-SALARIO = 0 AND WRK-ANO = 0
+             DISPLAY 'INFORMAR VALORES CORRETOS.'
+             END-IF.
+
+           PERFORM 0002-INICIALIZAR.
+           PERFORM 0003-PROCESSAR.
+           PERFORM 0004-FINALIZAR.
+
+           STOP RUN.
+
+
+       0002-INICIALIZAR.
+
+           DISPLAY 'NOME DO FUNCIONARIO: '
+           ACCEPT WRK-NOME.
+
+           DISPLAY 'ANO DE ENTRADA NA EMPRESA: '
+           ACCEPT WRK-ANO.
+
+           DISPLAY 'SALARIO: '
+           ACCEPT WRK-SALARIO.
+
+           DISPLAY 'DATA SISTEMA: '
+           ACCEPT WRK-DATA-SISTEMA.
+
+
+       0003-PROCESSAR.
+
+           COMPUTE WRK-TEMPO-CASA = (WRK-ANO - WRK-DATA-SISTEMA)
+             DISPLAY 'TEMPO DE CASA DO FUNCIONARIO: ' WRK-TEMPO-CASA
+
+           EVALUATE WRK-TEMPO-CASA
+
+           WHEN 0 THRU 1
+           COMPUTE WRK-AUMENTO = 0
+
+           WHEN 2 THRU 5
+           COMPUTE WRK-AUMENTO = WRK-SALARIO * 0,05
+
+           WHEN 6 THRU 15
+           COMPUTE WRK-AUMENTO = WRK-SALARIO * 0,10
+
+           WHEN OTHER
+           COMPUTE WRK-AUMENTO = WRK-SALARIO * 0,015
+
+           END-EVALUATE.
+
+
+       0004-FINALIZAR.
+
+             DISPLAY 'AUMENTO DE SALARIO DE: ' WRK-AUMENTO.
+             DISPLAY '-------------------------------------------------'
+             DISPLAY'FINAL DE PROCESSAMENTO'.
