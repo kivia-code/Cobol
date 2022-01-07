@@ -24,15 +24,10 @@
 
        0001-PRINCIPAL.
 
-           IF WRK-SALARIO = 0 AND WRK-ANO = 0
-             DISPLAY 'INFORMAR VALORES CORRETOS.'
-             END-IF.
-
            PERFORM 0002-INICIALIZAR.
            PERFORM 0003-PROCESSAR.
            PERFORM 0004-FINALIZAR.
 
-           STOP RUN.
 
 
        0002-INICIALIZAR.
@@ -77,3 +72,6 @@
              DISPLAY 'AUMENTO DE SALARIO DE: ' WRK-AUMENTO.
              DISPLAY '-------------------------------------------------'
              DISPLAY'FINAL DE PROCESSAMENTO'.
+
+
+             STOP RUN.
